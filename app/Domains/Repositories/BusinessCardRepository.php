@@ -7,7 +7,7 @@ use App\Models\BusinessCard;
 
 class BusinessCardRepository
 {
-    public function findByName(string $name)
+    public function findByName(string $name): BusinessCardEntity
     {
         $businessCard = BusinessCard::where('name', 'LIKE', '%' . $name . '%')->first();
 
