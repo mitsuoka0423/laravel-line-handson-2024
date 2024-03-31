@@ -1,0 +1,40 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Date;
+
+class initBusinessCardSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
+    {
+        DB::table('business_cards')->delete();
+        DB::table('business_cards')->insert([
+            'id' => IdGenerator::increment(),
+            'name' => '田中太郎',
+            'company_name' => 'テスト株式会社',
+            'post_code' => '111-1111',
+            'address' => '東京都千代田区〇〇1-1-1',
+            'phone' => '111-1111-1111',
+            'fax' => '111-1111-1111',
+            'email' => 'mitsuoka-takhairo@test.com',
+            'created_at' => Date::create(2024, 01, 01, 0, 0, 0),
+            'updated_at' => Date::create(2024, 01, 01, 0, 0, 0),
+        ]);
+    }
+}
+
+class IdGenerator
+{
+    private static $id = 1;
+
+    public static function increment(): int
+    {
+        return self::$id++;
+    }
+}
