@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Infrastructures;
+namespace App\Infrastructures\Api;
 
 use Illuminate\Support\Facades\Storage;
 

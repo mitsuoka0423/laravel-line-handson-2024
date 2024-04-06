@@ -31,4 +31,8 @@ return [
         ],
     ],
 
+    'line' => [
+        'channel_access_token' => env('LINE_CHANNEL_ACCESS_TOKEN', null) ?? throw new Exception('LINE_CHANNEL_ACCESS_TOKEN が未設定です'),
+        'channel_secret' => env('LINE_CHANNEL_SECRET', null) ?? throw new Exception('LINE_CHANNEL_SECRET が未設定です'),
+    ]
 ];

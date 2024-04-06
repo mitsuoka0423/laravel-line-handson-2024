@@ -1892,16 +1892,16 @@
         },
         {
             "name": "linecorp/line-bot-sdk",
-            "version": "9.7.0",
+            "version": "9.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/line/line-bot-sdk-php.git",
-                "reference": "a56b11adc87d564a89b9865fe38c63892588e3d7"
+                "reference": "c85ea46c4812ecd532f5568da2294eb9762840cb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/line/line-bot-sdk-php/zipball/a56b11adc87d564a89b9865fe38c63892588e3d7",
-                "reference": "a56b11adc87d564a89b9865fe38c63892588e3d7",
+                "url": "https://api.github.com/repos/line/line-bot-sdk-php/zipball/c85ea46c4812ecd532f5568da2294eb9762840cb",
+                "reference": "c85ea46c4812ecd532f5568da2294eb9762840cb",
                 "shasum": ""
             },
             "require": {
@@ -1916,7 +1916,7 @@
                 "phpmd/phpmd": "2.15.0",
                 "phpstan/phpstan": "^1.10",
                 "phpunit/phpunit": "^10.2",
-                "squizlabs/php_codesniffer": "3.8.1"
+                "squizlabs/php_codesniffer": "3.9.1"
             },
             "type": "library",
             "extra": {
@@ -1983,9 +1983,9 @@
             ],
             "support": {
                 "issues": "https://github.com/line/line-bot-sdk-php/issues",
-                "source": "https://github.com/line/line-bot-sdk-php/tree/9.7.0"
+                "source": "https://github.com/line/line-bot-sdk-php/tree/9.8.0"
             },
-            "time": "2024-02-06T05:58:12+00:00"
+            "time": "2024-04-03T05:17:39+00:00"
         },
         {
             "name": "monolog/monolog",

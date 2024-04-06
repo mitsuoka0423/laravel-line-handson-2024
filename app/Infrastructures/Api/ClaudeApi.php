@@ -1,9 +1,7 @@
 <?php
 
-namespace App\Infrastructures;
+namespace App\Infrastructures\Api;
 
-use App\Infrastructures\ClaudeApiRequest as InfrastructuresClaudeApiRequest;
-use App\Infrastructures\ClaudeApiResponse as InfrastructuresClaudeApiResponse;
 use Illuminate\Support\Facades\Http;
 
 class ClaudeApi
@@ -16,7 +14,7 @@ class ClaudeApi
     $this->apiKey = $apiKey;
   }
 
-  public function messages(InfrastructuresClaudeApiRequest $request): InfrastructuresClaudeApiResponse
+  public function messages(ClaudeApiRequest $request): ClaudeApiResponse
   {
     $requestBody = $request->getBody();
 
