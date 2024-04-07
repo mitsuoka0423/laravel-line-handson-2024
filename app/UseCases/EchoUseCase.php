@@ -22,12 +22,16 @@ class EchoUseCase implements UseCaseInterface
     {
         Log::info(json_encode([__METHOD__, '[START]']));
 
-        // NOTE: 送られたメッセージをそのまま返す（オウム返し）
-        $messages = [];
-        $textMessage = (new TextMessage())
-            ->setText($this->text)
-            ->setType(MessageType::TEXT);
-        $messages[] = $textMessage;
+        $messages = [
+            new TextMessage([
+                'type' => MessageType::TEXT,
+                'text' => '対応していないメッセージです。',
+            ]),
+            new TextMessage([
+                'type' => MessageType::TEXT,
+                'text' => $this->text, // NOTE: 送られたメッセージをそのまま返す（オウム返し）
+            ]),
+        ];
 
         Log::info(json_encode([__METHOD__, '[END]']));
         return $messages;
