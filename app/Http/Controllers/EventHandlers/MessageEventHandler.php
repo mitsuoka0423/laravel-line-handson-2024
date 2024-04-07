@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\EventHandlers;
 
+use App\UseCases\BusinessCardListViewUseCase;
 use App\UseCases\EchoUseCase;
 use Illuminate\Support\Facades\Log;
 use LINE\Webhook\Model\ImageMessageContent;
@@ -26,7 +27,7 @@ class MessageEventHandler implements EventHandlerInterface {
         if ($messageContent instanceof TextMessageContent) {
             $text = $messageContent->getText();
             if ($text === '名刺一覧') {
-                // $usecase = new BusinessCardListViewUseCase($messageContent);
+                $usecase = new BusinessCardListViewUseCase();
             } else {
                 $usecase = new EchoUseCase($messageContent->getText());
             }
