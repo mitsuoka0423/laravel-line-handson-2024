@@ -105,16 +105,19 @@ graph LR
   Model
   Api
 
-  Web -->|Request| Controller
-  Controller -->|UseCaseRequest| UseCase
+  LINEサーバー -->|Webhook Request| Controller
+  Controller -->|Event| EventHandler
+  EventHandler -->|Message| UseCase
   UseCase -->|ApiRequest| Api
+  Api --- ClaudeAPI
   UseCase --> Repository
   Repository --> Model
   Model --- DB
 
   Model -->|Collection| Repository
-  Repository -->|Entiry| UseCase
+  Repository -->|Entity| UseCase
   Api -->|ApiResponse| UseCase
-  UseCase --> Controller
-  Controller -->|Resouce| Web
+  UseCase -->|Message| EventHandler
+  EventHandler -->|Message| Controller
+  Controller -->|MessagingAPI| LINEサーバー
 ```
