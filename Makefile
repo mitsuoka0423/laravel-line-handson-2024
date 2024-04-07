@@ -33,3 +33,5 @@ install:
     laravelsail/php83-composer:latest \
     composer install --ignore-platform-reqs
 
+tunnel:
+	devtunnel host --port-numbers 10080 --allow-anonymous
