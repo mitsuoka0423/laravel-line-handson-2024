@@ -9,6 +9,7 @@
     "editorconfig.editorconfig",
     "bierner.markdown-mermaid",
     "ms-azuretools.vscode-docker",
-    "xdebug.php-debug"
+    "xdebug.php-debug",
+    "recca0120.vscode-phpunit"
   ]
 }

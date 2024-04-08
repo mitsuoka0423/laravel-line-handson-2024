@@ -35,3 +35,6 @@ install:
 
 tunnel:
 	devtunnel host --port-numbers 10080 --allow-anonymous
+
+sqlite:
+	sqlite3 ./database/database.sqlite
