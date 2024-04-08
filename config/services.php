@@ -34,5 +34,9 @@ return [
     'line' => [
         'channel_access_token' => env('LINE_CHANNEL_ACCESS_TOKEN') ?? throw new Exception('LINE_CHANNEL_ACCESS_TOKEN が未設定です'),
         'channel_secret' => env('LINE_CHANNEL_SECRET') ?? throw new Exception('LINE_CHANNEL_SECRET が未設定です'),
-    ]
+    ],
+
+    'claude' => [
+        'api_key' => env('CLAUDE_API_KEY') ?? throw new Exception('CLAUDE_API_KEY が未設定です'),
+    ],
 ];

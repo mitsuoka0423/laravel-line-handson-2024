@@ -12,6 +12,7 @@ use LINE\Clients\MessagingApi\Model\Message;
 use LINE\Clients\MessagingApi\Model\ReplyMessageRequest;
 use LINE\Clients\MessagingApi\Model\TextMessage;
 use LINE\Constants\MessageType;
+use SplFileObject;
 
 class MessagingApi
 {
@@ -55,7 +56,7 @@ class MessagingApi
                 ->setReplyToken($replyToken)
                 ->setMessages([
                     (new TextMessage())
-                        ->setText('処理に失敗しました。\nお手数をおかけしますが、時間をおいて再度お試しください。')
+                        ->setText("処理に失敗しました。\nお手数をおかけしますが、時間をおいて再度お試しください。")
                         ->setType(MessageType::TEXT)
                 ]);
             $this->apiClient->replyMessage($request);
@@ -64,8 +65,8 @@ class MessagingApi
         }
     }
 
-    public function getContent(string $messageId)
+    public function getContent(string $messageId): SplFileObject
     {
-        $content = $this->blobApiClient->getMessageContent($messageId);
+        return $this->blobApiClient->getMessageContent($messageId);
     }
 }

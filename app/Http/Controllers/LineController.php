@@ -31,7 +31,7 @@ class LineController extends Controller
             $channelSecret = config('services.line.channel_secret');
             $signature = $request->header(HTTPHeader::LINE_SIGNATURE);
             Log::debug(json_encode([__METHOD__, 'channelSecret', substr($channelSecret, 0, 5) . '*****']));
-            Log::debug(json_encode([__METHOD__, 'signature', $signature]));
+            Log::debug(json_encode([__METHOD__, 'signature', substr($signature, 0, 5) . '*****']));
 
             $messagingApi = new MessagingApi();
 
