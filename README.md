@@ -103,20 +103,21 @@ graph LR
   UseCase
   Repository
   Model
-  Api
 
   LINEサーバー -->|Webhook Request| Controller
   Controller -->|Event| EventHandler
   EventHandler -->|Message| UseCase
-  UseCase -->|ApiRequest| Api
-  Api --- ClaudeAPI
-  UseCase --> Repository
+  UseCase -->|ApiRequest| Infrastructure/Api
+  Infrastructure/Api --- ClaudeAPI
+  UseCase --> Infrastructure/Databases
+  Infrastructure/Databases --> Repository
   Repository --> Model
   Model --- DB
 
   Model -->|Collection| Repository
-  Repository -->|Entity| UseCase
-  Api -->|ApiResponse| UseCase
+  Repository -->|Entity| Infrastructure/Databases
+  Infrastructure/Databases -->|Domain| UseCase
+  Infrastructure/Api -->|ApiResponse| UseCase
   UseCase -->|Message| EventHandler
   EventHandler -->|Message| Controller
   Controller -->|MessagingAPI| LINEサーバー
