@@ -6,6 +6,10 @@ use Illuminate\Support\Facades\Storage;
 
 class ClaudeApiRequest
 {
+    const MODEL_CLAUDE_3_OPUS = 'claude-3-opus-20240229';
+    const MODEL_CLAUDE_3_SONNET = 'claude-3-sonnet-20240229';
+    const MODEL_CLAUDE_3_HAIKU = 'claude-3-haiku-20240307';
+
     private $model;
     private $maxTokens;
     private $prompt;
@@ -16,7 +20,7 @@ class ClaudeApiRequest
         string $prompt,
         string $imageType,
         string $imagePath,
-        string $model = 'claude-3-opus-20240229',
+        string $model = self::MODEL_CLAUDE_3_HAIKU,
         int $maxTokens = 1024,
     )
     {
