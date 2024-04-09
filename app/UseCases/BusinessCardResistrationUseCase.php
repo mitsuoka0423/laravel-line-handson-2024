@@ -54,6 +54,9 @@ class BusinessCardResistrationUseCase implements UseCaseInterface
         $prompt = ClaudeApiRequest::getPrompt();
         $imageType = 'image/jpeg';
         $claudeRequest = new ClaudeApiRequest($prompt, $imageType, $imagePath);
+        // NOTE: 上位モデルを使う場合は、第4引数にモデルを指定する
+        // $claudeRequest = new ClaudeApiRequest($prompt, $imageType, $imagePath, ClaudeApiRequest::MODEL_CLAUDE_3_SONNET);
+        // $claudeRequest = new ClaudeApiRequest($prompt, $imageType, $imagePath, ClaudeApiRequest::MODEL_CLAUDE_3_OPUS);
         $claudeResponse = $this->claudeApi->messages($claudeRequest);
 
         $businessCardContent = $claudeResponse->getContent()->getTextAsArray();
