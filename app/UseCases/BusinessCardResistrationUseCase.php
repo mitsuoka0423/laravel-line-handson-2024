@@ -45,7 +45,8 @@ class BusinessCardResistrationUseCase implements UseCaseInterface
         $messageId = $this->imageMessageContent->getId();
         $sfo = $this->messagingApi->getContent($messageId);
         $image = $sfo->fread($sfo->getSize());
-        $imagePath = 'public/' . $messageId . '.jpeg';
+        $imageName = $messageId . '.jpeg';
+        $imagePath = 'public/' . $imageName;
 
         // ストレージに保存する
         Storage::put($imagePath, $image);
@@ -60,7 +61,7 @@ class BusinessCardResistrationUseCase implements UseCaseInterface
         $claudeResponse = $this->claudeApi->messages($claudeRequest);
 
         $businessCardContent = $claudeResponse->getContent()->getTextAsArray();
-        $businessCardContent['image'] = $imagePath;
+        $businessCardContent['image'] = $imageName;
         $businessCard = new BusinessCard($businessCardContent);
 
         // 名刺の読み取りに失敗した場合、メッセージを返す

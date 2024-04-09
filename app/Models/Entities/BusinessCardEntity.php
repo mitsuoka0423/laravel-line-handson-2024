@@ -14,6 +14,7 @@ class BusinessCardEntity
     private $phone;
     private $fax;
     private $email;
+    private $image;
     private $createdAt;
     private $updatedAt;
 
@@ -26,6 +27,7 @@ class BusinessCardEntity
         string $phone,
         string $fax,
         string $email,
+        string $image,
         string $created_at,
         string $updated_at,
     ) {
@@ -37,6 +39,7 @@ class BusinessCardEntity
         $this->phone = $phone;
         $this->fax = $fax;
         $this->email = $email;
+        $this->image = $image;
         $this->createdAt = new DateTime($created_at);
         $this->updatedAt = new DateTime($updated_at);
     }
@@ -81,6 +84,11 @@ class BusinessCardEntity
         return $this->email;
     }
 
+    public function getImage(): string
+    {
+        return $this->image;
+    }
+
     public function getCreatedAt(): DateTime
     {
         return $this->createdAt;
@@ -89,5 +97,22 @@ class BusinessCardEntity
     public function getUpdatedAt(): DateTime
     {
         return $this->updatedAt;
+    }
+
+    public function asArray(): array
+    {
+        return [
+            "id" => $this->id,
+            "name" => $this->name,
+            "companyName" => $this->companyName,
+            "postCode" => $this->postCode,
+            "address" => $this->address,
+            "phone" => $this->phone,
+            "fax" => $this->fax,
+            "email" => $this->email,
+            "image" => $this->image,
+            "createdAt" => $this->createdAt,
+            "updatedAt" => $this->updatedAt,
+        ];
     }
 }

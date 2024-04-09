@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Log;
 
 class BusinessCard
 {
+    private int $id;
     private string $name;
     private string $companyName;
     private string $role;
@@ -20,6 +21,7 @@ class BusinessCard
         Log::info(json_encode([__METHOD__, '[START]']));
         Log::info(json_encode([__METHOD__, '$data', json_encode($data, JSON_UNESCAPED_UNICODE)], JSON_UNESCAPED_UNICODE));
 
+        $this->id = $data['id'] ?? -1;
         $this->name = $data['name'] ?? '';
         $this->companyName = $data['companyName'] ?? '';
         $this->role = $data['role'] ?? '';
@@ -31,6 +33,11 @@ class BusinessCard
         $this->image = $data['image'] ?? '';
 
         Log::info(json_encode([__METHOD__, '[START]']));
+    }
+
+    public function getId(): int
+    {
+        return $this->id;
     }
 
     public function getName(): string
@@ -76,6 +83,15 @@ class BusinessCard
     public function getImage(): string
     {
         return $this->image;
+    }
+
+    public function getImageFullUrl(): string
+    {
+        return implode("/", [
+            config('app.url'),
+            "storage",
+            $this->image,
+        ]);
     }
 
     public function getContent(): string

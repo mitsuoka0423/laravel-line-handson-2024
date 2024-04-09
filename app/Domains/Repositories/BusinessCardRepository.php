@@ -9,6 +9,37 @@ use Illuminate\Support\Facades\Log;
 
 class BusinessCardRepository
 {
+    /**
+     * @return BusinessCardEntity[]
+     */
+    public function list(int $limit = 5): array
+    {
+        Log::info(json_encode([__METHOD__, '[START]']));
+
+        $businessCards = BusinessCardModel::orderBy('id', 'desc')->take($limit)->get();
+
+        Log::info(json_encode([__METHOD__, '[END]']));
+
+        $businessCardEntities = [];
+        foreach ($businessCards as $businessCard) {
+            $businessCardEntities[] = new BusinessCardEntity(
+                $businessCard->id,
+                $businessCard->name,
+                $businessCard->company_name,
+                $businessCard->post_code,
+                $businessCard->address,
+                $businessCard->phone,
+                $businessCard->fax,
+                $businessCard->email,
+                $businessCard->image,
+                $businessCard->created_at,
+                $businessCard->updated_at,
+            );
+        }
+
+        return $businessCardEntities;
+    }
+
     public function findByName(string $name): BusinessCardEntity
     {
         Log::info(json_encode([__METHOD__, '[START]']));
