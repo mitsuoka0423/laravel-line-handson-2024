@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\EventHandlers;
 
+use App\UseCases\BusinessCardDetailViewUseCase;
 use App\UseCases\BusinessCardListViewUseCase;
 use App\UseCases\BusinessCardResistrationUseCase;
 use App\UseCases\EchoUseCase;
@@ -33,6 +34,8 @@ class MessageEventHandler implements EventHandlerInterface {
             $text = $messageContent->getText();
             if ($text === '名刺一覧') {
                 $usecase = new BusinessCardListViewUseCase();
+            } elseif (str_starts_with($text, '名刺を見る')) {
+                $usecase = new BusinessCardDetailViewUseCase();
             } else {
                 $usecase = new EchoUseCase($messageContent->getText());
             }
