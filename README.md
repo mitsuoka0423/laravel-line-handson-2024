@@ -4,12 +4,11 @@
 
 https://linedevelopercommunity.connpass.com/event/313579/
 
-## 推奨環境
+## 推奨エディター
 
 - VSCode
-  - Dev Container
 
-> 上記以外の環境はサポート対象外です
+> 上記エディターのみ確認しています
 
 ## 実行
 
@@ -27,6 +26,10 @@ make
 > make copy-env-if-not-exist
 > make up
 > ```
+
+<details>
+
+<summary>各コマンドについて</summary>
 
 ### インストールのみ
 
@@ -52,9 +55,21 @@ make up
 make down
 ```
 
+</details>
+
+## ポートフォワード
+
+ローカルで開発する際に、特定のポートをグローバルに公開して動作確認することができます
+
+> 事前に [devtunnel](https://learn.microsoft.com/ja-jp/azure/developer/dev-tunnels/get-started?tabs=macos) をインストールしてください
+
+```bash
+make tunnel
+```
+
 ## Dev Container
 
-コンテナ起動後に
+コンテナ起動後に `laravel.test-1` にアタッチする
 
 ### 操作イメージ
 
@@ -71,7 +86,9 @@ make down
 
 </details>
 
-## 全体像
+## システム概要
+
+### 全体像
 
 ```mermaid
 graph RL
@@ -95,7 +112,7 @@ graph RL
   LINEアプリ ---> サーバー
 ```
 
-## 依存関係
+### クラス依存関係
 
 ```mermaid
 graph LR
