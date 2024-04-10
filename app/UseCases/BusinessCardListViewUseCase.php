@@ -8,6 +8,7 @@ use LINE\Clients\MessagingApi\Model\CarouselColumn;
 use LINE\Clients\MessagingApi\Model\CarouselTemplate;
 use LINE\Clients\MessagingApi\Model\MessageAction;
 use LINE\Clients\MessagingApi\Model\TemplateMessage;
+use LINE\Clients\MessagingApi\Model\TextMessage;
 use LINE\Constants\ActionType;
 use LINE\Constants\MessageType;
 use LINE\Constants\TemplateType;
@@ -29,6 +30,18 @@ class BusinessCardListViewUseCase implements UseCaseInterface
         Log::info(json_encode([__METHOD__, '[START]']));
 
         $businessCardDomains = $this->businessCardInfrastructure->list();
+
+        if (count($businessCardDomains) === 0) {
+            $messages = [
+                new TextMessage([
+                    'type' => MessageType::TEXT,
+                    'text' => "名刺がまだ登録されていません。\n名刺の写真を送って登録してください。",
+                ]),
+            ];
+
+            Log::info(json_encode([__METHOD__, '[END]']));
+            return $messages;
+        }
 
         $carouselCloumns = [];
         foreach ($businessCardDomains as $businessCardDomain) {
