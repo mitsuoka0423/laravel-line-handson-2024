@@ -34,7 +34,7 @@ install:
     composer install --ignore-platform-reqs
 
 tunnel:
-	devtunnel host --port-numbers 10080 --allow-anonymous
+	devtunnel host --port-numbers 20080 --allow-anonymous
 
 sqlite:
 	sqlite3 ./database/database.sqlite
