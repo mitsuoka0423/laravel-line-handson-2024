@@ -19,7 +19,6 @@ class BusinessCardResistrationUseCase implements UseCaseInterface
     private ClaudeApi $claudeApi;
     private MessagingApi $messagingApi;
     private BusinessCardRepository $businessCardRepository;
-    private Storage $storage;
 
     public function __construct(
         ImageMessageContent $imageMessageContent,

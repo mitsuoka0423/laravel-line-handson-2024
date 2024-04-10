@@ -23,7 +23,7 @@ class AccessLogger
         $response = $next($request);
 
         // Log::debug(json_encode([$response]));
-        Log::info(json_encode(['[END]', $request->path(), new DateTime()]));
+        Log::info(json_encode(['[END]', $request->method(), $request->path(), new DateTime()]));
 
         return $response;
     }

@@ -57,6 +57,7 @@ class BusinessCardRepository
             $businessCard->phone,
             $businessCard->fax,
             $businessCard->email,
+            $businessCard->image,
             $businessCard->created_at,
             $businessCard->updated_at,
         );

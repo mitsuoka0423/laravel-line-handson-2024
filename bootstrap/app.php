@@ -22,17 +22,17 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withExceptions(function (Exceptions $exceptions) {
         $exceptions->report(function (BadRequestException $e) {
             Log::info(json_encode([__METHOD__, $e->getMessage()]));
-            Log::info(json_encode([__METHOD__, $e]));
+            Log::info(json_encode([__METHOD__, $e->getTraceAsString()]));
             abort(Response::HTTP_BAD_REQUEST);
         });
         $exceptions->report(function (UnauthorizedException $e) {
             Log::info(json_encode([__METHOD__, $e->getMessage()]));
-            Log::info(json_encode([__METHOD__, $e]));
+            Log::info(json_encode([__METHOD__, $e->getTraceAsString()]));
             abort(Response::HTTP_UNAUTHORIZED);
         });
         $exceptions->report(function (Exception $e) {
             Log::error(json_encode([__METHOD__, $e->getMessage()]));
-            Log::error(json_encode([__METHOD__, $e]));
+            Log::error(json_encode([__METHOD__, $e->getTraceAsString()]));
             abort(Response::HTTP_INTERNAL_SERVER_ERROR);
         });
     })->create();
