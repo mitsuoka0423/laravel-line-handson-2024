@@ -43,9 +43,9 @@ class BusinessCardListViewUseCase implements UseCaseInterface
             return $messages;
         }
 
-        $carouselCloumns = [];
+        $carouselColumns = [];
         foreach ($businessCardDomains as $businessCardDomain) {
-            $carouselCloumns[] = new CarouselColumn([
+            $carouselColumns[] = new CarouselColumn([
                 'title' => $businessCardDomain->getName(),
                 'text' => $businessCardDomain->getCompanyName(),
                 'thumbnailImageUrl' => $businessCardDomain->getImageFullUrl(),
@@ -63,7 +63,7 @@ class BusinessCardListViewUseCase implements UseCaseInterface
             'altText' => '名刺一覧',
             'template' => new CarouselTemplate([
                 'type' => TemplateType::CAROUSEL,
-                'columns' => $carouselCloumns,
+                'columns' => $carouselColumns,
             ]),
         ]);
         Log::debug(json_encode([__METHOD__, '$templateMessage', json_encode($templateMessage)]));
