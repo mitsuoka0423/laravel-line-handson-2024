@@ -41,10 +41,10 @@ class LineController extends Controller
 
             foreach ($events as $event) {
                 if ($event instanceof MessageEvent) {
-                    $eventHander = new MessageEventHandler($event, $messagingApi);
+                    $eventHandler = new MessageEventHandler($event);
 
                     $replyToken = $event->getReplyToken();
-                    $messages = $eventHander->handle();
+                    $messages = $eventHandler->handle();
                     $messagingApi->replyMessage($replyToken, $messages);
                 }
             }
