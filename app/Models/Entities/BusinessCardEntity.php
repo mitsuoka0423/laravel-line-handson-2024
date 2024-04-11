@@ -6,17 +6,17 @@ use DateTime;
 
 class BusinessCardEntity
 {
-    private $id;
-    private $name;
-    private $companyName;
-    private $postCode;
-    private $address;
-    private $phone;
-    private $fax;
-    private $email;
-    private $image;
-    private $createdAt;
-    private $updatedAt;
+    private int $id;
+    private string $name;
+    private string $companyName;
+    private string $postCode;
+    private string $address;
+    private string $phone;
+    private string $fax;
+    private string $email;
+    private string $image;
+    private DateTime $createdAt;
+    private DateTime $updatedAt;
 
     public function __construct(
         int $id,
