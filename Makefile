@@ -1,7 +1,7 @@
 run:
+	make copy-env-if-not-exist
 	make install
 	make down
-	make copy-env-if-not-exist
 	make up
 
 up:
