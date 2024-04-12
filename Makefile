@@ -33,6 +33,9 @@ install:
     laravelsail/php83-composer:latest \
     composer install --ignore-platform-reqs
 
+key-generate:
+	./vendor/bin/sail exec laravel.test php artisan key:generate
+
 tunnel:
 	devtunnel host --port-numbers 20080 --allow-anonymous
 
