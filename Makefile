@@ -3,9 +3,12 @@ run:
 	make install
 	make down
 	make up
+	sleep 10
+	make migrate
+	make storage-link
 
 up:
-	./vendor/bin/sail up
+	./vendor/bin/sail up -d
 
 down:
 	./vendor/bin/sail down
@@ -17,7 +20,10 @@ migrate:
 	./vendor/bin/sail exec laravel.test php artisan migrate
 
 seed:
-	php artisan db:seed --class=initBusinessCardSeeder
+	./vendor/bin/sail exec php artisan db:seed --class=initBusinessCardSeeder
+
+storage-link:
+	./vendor/bin/sail exec laravel.test php artisan storage:link
 
 driver:
 	cat driver.php | php artisan tinker
@@ -27,11 +33,11 @@ copy-env-if-not-exist:
 
 install:
 	docker run --rm \
-    -u "$(id -u):$(id -g)" \
-    -v .:/var/www/html \
-    -w /var/www/html \
-    laravelsail/php83-composer:latest \
-    composer install --ignore-platform-reqs
+	-u "$(id -u):$(id -g)" \
+	-v .:/var/www/html \
+	-w /var/www/html \
+	laravelsail/php83-composer:latest \
+	composer install --ignore-platform-reqs
 
 key-generate:
 	./vendor/bin/sail exec laravel.test php artisan key:generate
